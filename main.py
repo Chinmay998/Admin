@@ -1,6 +1,6 @@
 import streamlit as st
-from login import sfAccount_selector, session_builder
-from role_selection import role_selection
+from log_in import sfAccount_selector, session_builder
+from context import role_selection
 from other_app import other_app  # Import other application functions
 
 st.title('Multi-Page App')
