@@ -1,17 +1,22 @@
 import streamlit as st
-from role_selection_app import role_selection
+from login import sfAccount_selector, session_builder
+from role_selection import role_selection
+from other_app import other_app  # Import other application functions
 
-st.title('CONTEXT')
+st.title('Multi-Page App')
 
 def main():
-    app_options = ["Role Selection", "Warehouse Selection"]  # Add more pages here
-    selected_app = st.sidebar.selectbox("Select an Application", app_options)
-    
-    if selected_app == "Role Selection":
-        role_selection(session)  # Import this function from your module
-    
-    # Add similar blocks for other pages here
+    page_options = ["Log_in", "CONTEXT"]  # Add more pages here
+    selected_page = st.sidebar.selectbox("Select a Page", page_options)
 
+    if selected_page == "Log_in":
+        # Call functions from login.py module
+        sfAccount_selector(config)
+        session_builder(conn)
+    
+    elif selected_page == "CONTEXT":
+        role_selection()  # Call the function from role_selection.py module
+    
+   
 if __name__ == "__main__":
-    session = st.session_state['Session']
     main()
