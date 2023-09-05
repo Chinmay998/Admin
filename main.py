@@ -10,7 +10,7 @@ def main():
     selected_page = st.sidebar.selectbox("Select a Page", page_options)
 
        if selected_page == "Login":
-        conn = sfAccount_selector(config)  # Get 'conn' from sfAccount_selector
+        conn = sfAccount_selector()  # Get 'conn' from sfAccount_selector
         if conn is not None:
             session_builder(conn)  # Pass 'conn' to session_builder
     
