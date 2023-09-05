@@ -11,7 +11,7 @@ def main():
 
     if selected_page == "Log_in":
         # Call functions from login.py module
-        sfAccount_selector(_config)
+        sfAccount_selector(config)
         session_builder(conn)
     
     elif selected_page == "CONTEXT":
