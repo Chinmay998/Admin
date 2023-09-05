@@ -65,7 +65,7 @@ st.set_page_config(
 st.title('Login')
 st.info('Login on this screen to use other tools seemlessly. Please refresh the page while switching between accounts')
 
-conn = sfAccount_selector(config)
+conn = sfAccount_selector()
 connect = st.button('Connect')
 if connect:
     try:
