@@ -13,7 +13,7 @@ config.read('config.ini')
 
 #Function to select the Snowflake Account
 #@st.cache_resource(experimental_allow_widgets=True)
-def sfAccount_selector(config):
+def sfAccount_selector():
     #setup config.ini read rules
  
     # account = st.selectbox("Select an account to connect",['Infosys','CMACGM','Personal Account'])
