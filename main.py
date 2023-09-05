@@ -15,7 +15,7 @@ def main():
            session_builder(conn)  # Pass 'conn' to session_builder
     
     elif selected_page == "CONTEXT":
-        role_selection()  # Call the function from role_selection.py module
+        role_selection(Session)  # Call the function from role_selection.py module
     
    
 if __name__ == "__main__":
