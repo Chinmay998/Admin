@@ -1,4 +1,5 @@
 import streamlit as st
+from snowflake.snowpark import Session
 from Log_in import sfAccount_selector, session_builder
 from Context import role_selection
 
