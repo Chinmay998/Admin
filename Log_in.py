@@ -13,7 +13,7 @@ config.read('config.ini')
 
 #Function to select the Snowflake Account
 #@st.cache_resource(experimental_allow_widgets=True)
-def sfAccount_selector():
+def sfAccount_selector(config):
     #setup config.ini read rules
  
     # account = st.selectbox("Select an account to connect",['Infosys','CMACGM','Personal Account'])
@@ -65,7 +65,7 @@ st.set_page_config(
 st.title('Login')
 st.info('Login on this screen to use other tools seemlessly. Please refresh the page while switching between accounts')
 
-conn = sfAccount_selector()
+conn = sfAccount_selector(config)
 connect = st.button('Connect')
 if connect:
     try:
