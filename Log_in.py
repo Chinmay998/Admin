@@ -34,13 +34,16 @@ config.read('config.ini')
     #             "password": sfPass}
     #     if conn is not None:
     #         return conn
+import streamlit as st
+import configparser
+
 def sfAccount_selector(config):
-    # Generate unique keys for each input widget
-    sfAccount = st.text_input("Enter Account", key=f"account_input_{id(sf)}")
+    # Use fixed keys for input widgets
+    sfAccount = st.text_input("Enter Account", key="account_input")
     st.session_state['sfAccount'] = sfAccount
-    sfUser = st.text_input("Enter Username", key=f"username_input_{id(sf)}")
+    sfUser = st.text_input("Enter Username", key="username_input")
     st.session_state['sfUser'] = sfUser    
-    sfPass = st.text_input("Enter Password", type='password', key=f"password_input_{id(sf)}")
+    sfPass = st.text_input("Enter Password", type='password', key="password_input")
     st.session_state['sfPass'] = sfPass
     if sfUser and sfPass:
         conn = {
@@ -49,6 +52,7 @@ def sfAccount_selector(config):
             "password": sfPass
         }
         return conn
+
 
 #Function to Create a session using the connection parameters
 def switch_page(page_name: str):
