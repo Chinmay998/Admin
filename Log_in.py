@@ -37,13 +37,17 @@ config.read('config.ini')
     #         return conn
 
 
+import streamlit as st
+import configparser
+
 def sfAccount_selector(config):
-    # Generate unique keys for each input widget
-    sfAccount = st.text_input("Enter Account", key=str(uuid.uuid4()))
+    # Use a single unique key for all input widgets
+    widget_key = "sf_input"
+    sfAccount = st.text_input("Enter Account", key=widget_key + "_account")
     st.session_state['sfAccount'] = sfAccount
-    sfUser = st.text_input("Enter Username", key=str(uuid.uuid4()))
+    sfUser = st.text_input("Enter Username", key=widget_key + "_username")
     st.session_state['sfUser'] = sfUser    
-    sfPass = st.text_input("Enter Password", type='password', key=str(uuid.uuid4()))
+    sfPass = st.text_input("Enter Password", type='password', key=widget_key + "_password")
     st.session_state['sfPass'] = sfPass
     if sfUser and sfPass:
         conn = {
@@ -52,6 +56,7 @@ def sfAccount_selector(config):
             "password": sfPass
         }
         return conn
+
 
 
 
