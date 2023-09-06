@@ -4,6 +4,7 @@ from snowflake.snowpark import Session
 from snowflake.snowpark.functions import *
 import streamlit as st
 import pandas as pd
+import uuid
 
 # Get the current credentials
 config = configparser.ConfigParser()
@@ -34,16 +35,15 @@ config.read('config.ini')
     #             "password": sfPass}
     #     if conn is not None:
     #         return conn
-import streamlit as st
-import configparser
+
 
 def sfAccount_selector(config):
-    # Use fixed keys for input widgets
-    sfAccount = st.text_input("Enter Account", key="account_input")
+    # Generate unique keys for each input widget
+    sfAccount = st.text_input("Enter Account", key=str(uuid.uuid4()))
     st.session_state['sfAccount'] = sfAccount
-    sfUser = st.text_input("Enter Username", key="username_input")
+    sfUser = st.text_input("Enter Username", key=str(uuid.uuid4()))
     st.session_state['sfUser'] = sfUser    
-    sfPass = st.text_input("Enter Password", type='password', key="password_input")
+    sfPass = st.text_input("Enter Password", type='password', key=str(uuid.uuid4()))
     st.session_state['sfPass'] = sfPass
     if sfUser and sfPass:
         conn = {
@@ -52,6 +52,7 @@ def sfAccount_selector(config):
             "password": sfPass
         }
         return conn
+
 
 
 #Function to Create a session using the connection parameters
