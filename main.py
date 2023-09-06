@@ -20,7 +20,8 @@ def main():
             session = Session.builder.configs(conn).create()  # Pass 'conn' to session_builder
     
     elif selected_page == "CONTEXT":
-        role_selection(session)  # Call the function from role_selection.py module
+        if session is not None:
+           role_selection(session)# Call the function from role_selection.py module
     
    
 if __name__ == "__main__":
