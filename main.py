@@ -13,7 +13,7 @@ config.read('config.ini')
 def main():
     page_options = ["Log_in", "CONTEXT"]  # Add more pages here
     selected_page = st.sidebar.selectbox("Select a Page", page_options)
-    session = None
+    
     if selected_page == "Login":
         conn = sfAccount_selector(config)  # Get 'conn' from sfAccount_selector
         if conn is not None:
