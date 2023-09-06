@@ -13,7 +13,7 @@ config.read('config.ini')
 
 #Function to select the Snowflake Account
 #@st.cache_resource(experimental_allow_widgets=True)
-def sfAccount_selector(config):
+# def sfAccount_selector(config):
     #setup config.ini read rules
  
     # account = st.selectbox("Select an account to connect",['Infosys','CMACGM','Personal Account'])
@@ -22,18 +22,33 @@ def sfAccount_selector(config):
     # elif account == 'CMACGM':
     #     sfAccount = _config['Accounts']['Infosys']
     # else:
-    sfAccount = st.text_input("Enter Account")
+    # sfAccount = st.text_input("Enter Account")
+    # st.session_state['sfAccount'] = sfAccount
+    # sfUser = st.text_input("Enter Username")
+    # st.session_state['sfUser'] = sfUser    
+    # sfPass = st.text_input("Enter Password",type='password')
+    # st.session_state['sfPass'] = sfPass
+    # if sfUser and sfPass:
+    #     conn = {"account": sfAccount,
+    #             "user": sfUser,
+    #             "password": sfPass}
+    #     if conn is not None:
+    #         return conn
+def sfAccount_selector(config):
+    # Generate unique keys for each input widget
+    sfAccount = st.text_input("Enter Account", key="account_input")
     st.session_state['sfAccount'] = sfAccount
-    sfUser = st.text_input("Enter Username")
+    sfUser = st.text_input("Enter Username", key="username_input")
     st.session_state['sfUser'] = sfUser    
-    sfPass = st.text_input("Enter Password",type='password')
+    sfPass = st.text_input("Enter Password", type='password', key="password_input")
     st.session_state['sfPass'] = sfPass
     if sfUser and sfPass:
-        conn = {"account": sfAccount,
-                "user": sfUser,
-                "password": sfPass}
-        if conn is not None:
-            return conn
+        conn = {
+            "account": sfAccount,
+            "user": sfUser,
+            "password": sfPass
+        }
+        return conn
 
 #Function to Create a session using the connection parameters
 def switch_page(page_name: str):
