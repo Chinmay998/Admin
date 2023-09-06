@@ -28,7 +28,7 @@
 #     main()
 
 import streamlit as st
-from Log_in import sfAccount_selector
+from Log_in import sfAccount_selector,config
 from snowflake.snowpark import Session
 from Context import role_selection
 
