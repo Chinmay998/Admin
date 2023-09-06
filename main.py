@@ -19,9 +19,9 @@ def main():
         if conn is not None:
             session = Session.builder.configs(conn).create()  # Pass 'conn' to session_builder
     
-    elif selected_page == "CONTEXT":
-        if session is not None:
-           role_selection(session)# Call the function from role_selection.py module
+    if session is not None:
+        if selected_page == "Role Selection":
+            role_selection(session)
     
    
 if __name__ == "__main__":
